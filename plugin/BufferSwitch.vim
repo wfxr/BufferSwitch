@@ -1,17 +1,10 @@
-" BufPos:  Activate a buffer by its position number in the buffers
-"          list
-" Author:  Michele Campeotto <michele@campeotto.net>
+" BufferSwitch:  Switch buffer by its position number in the buffers list
 " Date:    2015-01-03
 " Version: 1.1
 "
-" This script provides a function to activate a vim buffer by passing it the
-" position in the buffers list and maps it to <M-number> to easily switch
-" between open buffers.
-"
-" This is best used togheter with the buftabs plugin:
-"   http://www.vim.org/scripts/script.php?script_id=1664
+" This script provides a function to switch to  a vim buffer by passing it the position in the buffers list and maps it to <M-number> to easily switch between open buffers.
 
-function! BufPos_ActivateBuffer(num)
+function! BufferSwitch_ActivateBuffer(num)
     let l:count = 1
     for i in range(1, bufnr("$"))
         if buflisted(i) && getbufvar(i, "&modifiable") 
@@ -25,10 +18,10 @@ function! BufPos_ActivateBuffer(num)
     echo "No buffer!"
 endfunction
 
-function! BufPos_Initialize()
+function! BufferSwitch_Initialize()
     for i in range(1, 9) 
-        exe "map " . i . " :call BufPos_ActivateBuffer(" . i . ")<CR>"
+        exe "map " . i . " :call BufferSwitch_ActivateBuffer(" . i . ")<CR>"
     endfor
 endfunction
 
-autocmd VimEnter * call BufPos_Initialize()
+autocmd VimEnter * call BufferSwitch_Initialize()
