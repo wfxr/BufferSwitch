@@ -1,8 +1,8 @@
 " BufPos:  Activate a buffer by its position number in the buffers
 "          list
 " Author:  Michele Campeotto <michele@campeotto.net>
-" Date:    2007-04-25
-" Version: 1.0
+" Date:    2015-01-03
+" Version: 1.1
 "
 " This script provides a function to activate a vim buffer by passing it the
 " position in the buffers list and maps it to <M-number> to easily switch
@@ -27,9 +27,8 @@ endfunction
 
 function! BufPos_Initialize()
     for i in range(1, 9) 
-        exe "map <M-" . i . "> :call BufPos_ActivateBuffer(" . i . ")<CR>"
+        exe "map " . i . " :call BufPos_ActivateBuffer(" . i . ")<CR>"
     endfor
-    exe "map <M-0> :call BufPos_ActivateBuffer(10)<CR>"
 endfunction
 
 autocmd VimEnter * call BufPos_Initialize()
